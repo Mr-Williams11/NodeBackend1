@@ -8,7 +8,7 @@ import UsersRouter from './routes/user.js'
 import ProductsRouter from './routes/products.js'
 config()
 
-const PORT = process.env.port
+const PORT = process.env.PORT
 const app = express()
 
 
@@ -21,16 +21,16 @@ app.use(express.static('static'))
 app.use('/users',UsersRouter)
 app.use('/products',ProductsRouter)
 
-app.post('/users', (req, res)=>{
-    const {username, password }= req.body;
-    bcrypt.hash(password, 10, async (err, hash) => {
-        if(err) throw err
-    await addUser(username, hash)
-        res.send({
-            msg: "You have created an account"
-        })
-    })
-})
+// app.post('/users', (req, res)=>{
+//     const {username, password }= req.body;
+//     bcrypt.hash(password, 10, async (err, hash) => {
+//         if(err) throw err
+//     await addUser(username, hash)
+//         res.send({
+//             msg: "You have created an account"
+//         })
+//     })
+// })
 
 app.listen(PORT, ()=>{
     console.log('Server is running on http://localhost:' + PORT);
