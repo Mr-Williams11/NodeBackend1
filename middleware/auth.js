@@ -4,12 +4,12 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import { verifyUser } from '../models/users.js';
 
-// middleware for login only, checks if a token is present or valid
+// middleware for authentication of the user
 const verifyToken = (req, res, next) => {
     let { cookie } = req.headers;
     let tokenInHeader = cookie && cookie.split('=')[1];
     if (!tokenInHeader) {
-        return res.sendStatus(401); // If No Token found in website headers
+        return res.sendStatus(401);
     }
     jwt.verify(tokenInHeader, process.env.SECRET_KEY, (err, user) => {
         if (err) {
