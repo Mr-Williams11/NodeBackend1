@@ -1,9 +1,7 @@
 import express from 'express';
 import {config} from 'dotenv';
 import cors from 'cors';
-import bcrypt from 'bcrypt';
 import cookieParser from 'cookie-parser';
-import jwt from 'jsonwebtoken';
 import UsersRouter from './routes/user.js'
 import ProductsRouter from './routes/products.js'
 config()
