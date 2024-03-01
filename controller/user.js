@@ -51,9 +51,8 @@ export default {
             userProfile = userProfile || user.userProfile;
             await editUser(+req.params.userID, firstName, lastName, userAge, Gender, userRole, emailAdd, userPass, userProfile);
             res.json(await getUsers());
-            res.status(200).send({ msg: 'Edited User Successfully' });
         } catch (error) {
-            res.status(500).send({ error: 'Internal Server Error' });
+            res.status(500).json({ error: 'Internal Server Error' });
         }
     },
     deleteUser: async (req, res) => {
